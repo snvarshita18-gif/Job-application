@@ -1,0 +1,219 @@
+:root {
+  --background-start: #eef2ff;
+  --background-end: #dbeafe;
+  --card: rgba(255, 255, 255, 0.95);
+  --text: #1f2937;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --error: #dc2626;
+  --success: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.14), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 32%),
+    linear-gradient(180deg, var(--background-start), var(--background-end));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page-wrapper {
+  width: min(960px, 100%);
+}
+
+.form-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 32px;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
+  padding: 42px;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.08), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.08), transparent 18%);
+  pointer-events: none;
+}
+
+.form-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
+.form-header h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 2.2vw, 2.5rem);
+}
+
+.form-header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.field-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-group,
+.radio-group,
+.checkbox-group {
+  margin-top: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.form-group label,
+.radio-group legend,
+.checkbox-group legend {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 16px;
+  padding: 15px 18px;
+  font-size: 1rem;
+  color: var(--text);
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  transform: translateY(-1px);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.7);
+  box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.1);
+}
+
+textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 18px;
+  padding: 18px 20px;
+  background: #f8fafc;
+}
+
+fieldset legend {
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.radio-group label,
+.checkbox-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.radio-group label input,
+.checkbox-group label input {
+  width: 18px;
+  height: 18px;
+}
+
+.error-message,
+.success-message {
+  margin-top: 10px;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.error-message {
+  color: var(--error);
+}
+
+.success-message {
+  color: var(--success);
+  font-weight: 600;
+}
+
+button {
+  margin-top: 30px;
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 18px 35px rgba(79, 70, 229, 0.2);
+}
+
+button:hover {
+  opacity: 0.98;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 800px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 16px;
+  }
+
+  .form-card {
+    padding: 26px;
+  }
+
+  .radio-group label,
+  .checkbox-group label {
+    display: block;
+    margin-right: 0;
+  }
+}
